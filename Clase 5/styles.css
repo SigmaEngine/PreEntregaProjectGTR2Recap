@@ -1,0 +1,70 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el header */
+header {
+    background-color: #ffe600b2; /* color de fondo */
+    color: rgb(0, 0, 0); /* color del texto */
+    text-align: center; /* alinear el texto al centro */
+    padding: 5px; /* espacio interno */
+    font-family: Space Grotesk, sans-serif; /* tipo de fuente */
+}
+
+/* Estilos para el footer */
+footer {
+    background-color: #333; /* color de fondo oscuro */
+    color: rgb(255, 255, 255); /* color del texto */
+    text-align: center; /* alinear el texto al centro */
+    padding: 5px; /* espacio interno */
+    font-family: 'Space Grotesk', sans-serif; /* tipo de fuente diferente */
+    position: fixed; /* posición fija al final */
+    bottom: 0; /* asegurarse que esté en la parte inferior */
+    width: 100%; /* ocupar todo el ancho */
+}
+/* Estilo para la lista de navegación */
+.nav-list {
+    list-style: none; /* Quita las viñetas de la lista */
+    padding: 0; /* Quita el padding extra por defecto de las listas */
+    margin: 0; /* Quita el margen por defecto */
+    display: flex; /* Para que los elementos se alineen horizontalmente */
+    background-color: #333; /* Fondo del menú de navegación */
+}
+  
+/* Estilo para los elementos de la lista (enlaces) */
+.nav-list li {
+    margin: 0 5px; /* Espacio entre los elementos de la lista */
+}
+  
+/* Estilo para los enlaces */
+.nav-list a {
+    color: #fff; /* Color de los enlaces */
+    text-decoration: none; /* Quita la subrayado de los enlaces */
+    font-size: 18px; /* Tamaño de la fuente */
+    padding: 10px 15px; /* Espaciado dentro del enlace */
+    display: block; /* Hace que el enlace ocupe todo el área del li */
+}
+  
+/* Estilo para los enlaces al pasar el ratón por encima */
+.nav-list a:hover {
+    background-color: #555; /* Fondo del enlace al pasar el ratón */
+    color: #f0f0f0; /* Color del texto al pasar el ratón */
+}
+
+/* Estilo para los iconos sociales */
+.social-icons a {
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-icons img {
+    width: 30px; /* Tamaño de los iconos */
+    height: 30px;
+}
+
+.social-icons a:hover img {
+    opacity: 0.7; /* Efecto hover */
+}

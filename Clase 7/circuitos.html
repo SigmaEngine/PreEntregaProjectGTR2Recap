@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIA GTR2 WIKI</title>
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="circuitos.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>GTR 2: FIA GT Racing Game</h1>
+        <img src="https://cdn2.steamgriddb.com/logo/44089d5f715bc4112ad95576555d0f4e.png" alt="Logo" width="200">
+        <p>Bienvenido a la Pagina de informacion del videojuego GTR2: FIA GT Racing Game</p>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <ul class="nav-list">
+            <li><a href="#clases y coches">Clases y coches</a></li>
+            <li><a href="#circuitos">Circuitos</a></li>
+            <li><a href="#imagenes">Imagenes</a></li>
+        </ul>
+    </nav>
+    <!-- Contenido principal -->
+    <main>
+        <section id="circuitos">
+            <h2>Circuitos</h2>
+            <p>Listado de circuitos que forman parte del videojuego.</p>
+        </section>
+    </main>
+    <main>
+        <section id="contacto">
+            <h2>Contacto</h2>
+            
+            <!-- Formulario de contacto -->
+            <form action="https://formspree.io/f/xrbpoyyq" method="POST">
+             <label for="name">Nombre:</label>
+             <input type="text" id="name" name="name" required><br><br>
+
+             <label for="email">Correo electrónico:</label>
+             <input type="email" id="email" name="email" required><br><br>
+
+             <label for="message">Mensaje:</label><br>
+             <textarea id="message" name="message" required></textarea><br><br>
+
+             <button type="submit">Enviar</button>
+        
+             <input type="hidden" name="_next" value="https://tusitio.com/gracias">
+             <input type="hidden" name="_subject" value="Nuevo mensaje de contacto">
+           </form>
+          
+            <!-- Tarjetas de reseñas -->
+            <div class="reseñas">
+              <div class="tarjeta">
+                <p>"Gran pagina para conocer información del GTR2!"</p>
+                <p>- Thomas Funegurdson</p>
+              </div>
+              <div class="tarjeta">
+                <p>"Es genial la informacion del BMW M3 GTR."</p>
+                <p>- Razor Callahan</p>
+              </div>
+              <div class="tarjeta">
+                <p>"Recomiendo completamente esta pagina para aprenderse el juego antes de rodar en pista."</p>
+                <p>- Pedro Gaseoso</p>
+              </div>
+            </div>
+        </section>
+    </main>
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025, Todos los derechos reservados a SimBin Studios, 10tacle Studios y Blimey! Games.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="https://www.twitter.com" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+            <a href="https://www.youtube.com" target="_blank"><img src="youtube-icon.png" alt="YouTube"></a>
+        </div>
+    </footer>
+</body>
+</html>
