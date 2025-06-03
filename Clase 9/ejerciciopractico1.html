@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Operaciones con Números</title>
+</head>
+<body>
+  <h1>Calculadora Básica</h1>
+
+  <label for="num1">Primer número:</label>
+  <input type="text" id="num1"><br><br>
+
+  <label for="num2">Segundo número:</label>
+  <input type="text" id="num2"><br><br>
+
+  <button onclick="calcular()">Calcular</button>
+
+  <script>
+    function calcular() {
+      let input1 = document.getElementById("num1").value;
+      let input2 = document.getElementById("num2").value;
+
+      // Validación
+      if (isNaN(input1) || isNaN(input2) || input1 === "" || input2 === "") {
+        console.log("Error: Ingresá dos números válidos.");
+        return;
+      }
+
+      // Conversión
+      let num1 = parseFloat(input1);
+      let num2 = parseFloat(input2);
+
+      // Operaciones
+      let suma = num1 + num2;
+      let resta = num1 - num2;
+      let multiplicacion = num1 * num2;
+      let division = num2 !== 0 ? num1 / num2 : "No se puede dividir por cero";
+
+      // Mostrar resultados en la consola
+      console.log("Resultados:");
+      console.log("Suma:", suma);
+      console.log("Resta:", resta);
+      console.log("Multiplicación:", multiplicacion);
+      console.log("División:", division);
+
+      // Comparación con valor dado
+      let valorComparacion = 100;
+      if (suma > valorComparacion) {
+        console.log("La suma es mayor que", valorComparacion);
+      } else if (suma < valorComparacion) {
+        console.log("La suma es menor que", valorComparacion);
+      } else {
+        console.log("La suma es igual a", valorComparacion);
+      }
+    }
+  </script>
+</body>
+</html>
