@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificación de Edad</title>
+</head>
+<body>
+  <h1>Verificación de Edad</h1>
+  <form id="formulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required><br><br>
+
+    <label for="edad">Edad:</label>
+    <input type="text" id="edad" required><br><br>
+
+    <button type="submit">Verificar</button>
+  </form>
+
+  <p id="resultado"></p>
+
+  <script>
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+      event.preventDefault(); // Evita que el formulario recargue la página
+
+      let nombre = document.getElementById("nombre").value;
+      let edadTexto = document.getElementById("edad").value;
+
+      // Validar si la edad es un número
+      if (isNaN(edadTexto)) {
+        console.log("La edad ingresada no es un número válido.");
+        document.getElementById("resultado").textContent = "Por favor ingresá una edad válida.";
+      } else {
+        let edad = parseInt(edadTexto);
+        let mensaje = "Hola " + nombre + ", tenés " + edad + " años.";
+
+        if (edad >= 18) {
+          mensaje += " Sos mayor de edad.";
+        } else {
+          mensaje += " Sos menor de edad.";
+        }
+
+        console.log(mensaje);
+        document.getElementById("resultado").textContent = mensaje;
+      }
+    });
+  </script>
+</body>
+</html>
