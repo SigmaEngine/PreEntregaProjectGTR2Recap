@@ -15,14 +15,21 @@
 
   <button onclick="calcular()">Calcular</button>
 
+  <h2>Resultados:</h2>
+  <div id="resultados"></div>
+
   <script>
     function calcular() {
       let input1 = document.getElementById("num1").value;
       let input2 = document.getElementById("num2").value;
+      let resultadosDiv = document.getElementById("resultados");
+
+      // Limpiar resultados anteriores
+      resultadosDiv.innerHTML = "";
 
       // Validación
       if (isNaN(input1) || isNaN(input2) || input1 === "" || input2 === "") {
-        console.log("Error: Ingresá dos números válidos.");
+        resultadosDiv.innerHTML = "<p style='color:red;'>Error: Ingresá dos números válidos.</p>";
         return;
       }
 
@@ -34,23 +41,22 @@
       let suma = num1 + num2;
       let resta = num1 - num2;
       let multiplicacion = num1 * num2;
-      let division = num2 !== 0 ? num1 / num2 : "No se puede dividir por cero";
+      let division = num2 !== 0 ? (num1 / num2).toFixed(2) : "No se puede dividir por cero";
 
-      // Mostrar resultados en la consola
-      console.log("Resultados:");
-      console.log("Suma:", suma);
-      console.log("Resta:", resta);
-      console.log("Multiplicación:", multiplicacion);
-      console.log("División:", division);
+      // Mostrar resultados en el HTML
+      resultadosDiv.innerHTML += `<p>Suma: ${suma}</p>`;
+      resultadosDiv.innerHTML += `<p>Resta: ${resta}</p>`;
+      resultadosDiv.innerHTML += `<p>Multiplicación: ${multiplicacion}</p>`;
+      resultadosDiv.innerHTML += `<p>División: ${division}</p>`;
 
       // Comparación con valor dado
       let valorComparacion = 100;
       if (suma > valorComparacion) {
-        console.log("La suma es mayor que", valorComparacion);
+        resultadosDiv.innerHTML += `<p>La suma es mayor que ${valorComparacion}</p>`;
       } else if (suma < valorComparacion) {
-        console.log("La suma es menor que", valorComparacion);
+        resultadosDiv.innerHTML += `<p>La suma es menor que ${valorComparacion}</p>`;
       } else {
-        console.log("La suma es igual a", valorComparacion);
+        resultadosDiv.innerHTML += `<p>La suma es igual a ${valorComparacion}</p>`;
       }
     }
   </script>
