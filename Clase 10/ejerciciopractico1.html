@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificación de Acceso</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Verificación de Acceso al Evento</h2>
+
+  <label for="edad">Edad:</label><br>
+  <input type="number" id="edad" placeholder="Ingresá tu edad"><br>
+
+  <label for="vip">¿Sos miembro VIP?</label><br>
+  <select id="vip">
+    <option value="no">No</option>
+    <option value="sí">Sí</option>
+  </select><br>
+
+  <button onclick="verificarAcceso()">Verificar Acceso</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function verificarAcceso() {
+      const edad = parseInt(document.getElementById('edad').value);
+      const esVIP = document.getElementById('vip').value.toLowerCase();
+      const resultado = document.getElementById('resultado');
+
+      if (isNaN(edad)) {
+        resultado.textContent = "Por favor, ingresá una edad válida.";
+        console.log("Edad inválida ingresada.");
+      } else {
+        if (edad >= 18) {
+          console.log("Acceso permitido al evento.");
+          if (esVIP === "sí") {
+            resultado.textContent = "Acceso permitido al evento y al área exclusiva VIP.";
+            console.log("Acceso al área VIP concedido.");
+          } else {
+            resultado.textContent = "Acceso permitido al evento, pero no al área VIP.";
+            console.log("Sin acceso al área VIP.");
+          }
+        } else {
+          resultado.textContent = "Acceso denegado. Debés tener al menos 18 años.";
+          console.log("Acceso denegado por edad.");
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
