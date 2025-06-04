@@ -2,18 +2,18 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Lista de Productos con Descuento</title>
+  <title>Gestor de Productos con Descuento</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 30px;
-      background-color: #f9f9f9;
+      background-color: #f4f4f4;
     }
-    h1 {
+    h1, h2 {
       color: #2c3e50;
     }
     .producto {
-      margin: 10px 0;
+      margin: 5px 0;
     }
     .con-descuento {
       color: green;
@@ -21,62 +21,118 @@
     .sin-descuento {
       color: darkred;
     }
+    form {
+      margin-bottom: 20px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ccc;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="text"],
+    input[type="number"] {
+      width: 200px;
+      padding: 5px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 15px;
+    }
   </style>
 </head>
 <body>
-  <h1>Productos con Descuento</h1>
+
+  <h1>Gestor de Productos</h1>
+
+  <form id="formularioProducto">
+    <label>Nombre del producto:
+      <input type="text" id="nombre" required>
+    </label>
+    <label>Precio:
+      <input type="number" id="precio" required>
+    </label>
+    <label>
+      <input type="checkbox" id="descuento"> Tiene descuento
+    </label>
+    <button type="submit">Agregar producto</button>
+  </form>
+
+  <h2>Lista de productos:</h2>
   <div id="lista"></div>
+
   <hr>
-  <p><strong>Total con descuento:</strong> <span id="conDescuento"></span></p>
-  <p><strong>Total sin descuento:</strong> <span id="sinDescuento"></span></p>
+  <p><strong>Total con descuento:</strong> <span id="conDescuento">0</span></p>
+  <p><strong>Total sin descuento:</strong> <span id="sinDescuento">0</span></p>
 
   <script>
-    const productos = [
-      { nombre: "Zapatillas", precio: 12000, descuento: true },
-      { nombre: "Campera", precio: 25000, descuento: false },
-      { nombre: "Gorra", precio: 5000, descuento: true },
-      { nombre: "Pantalón", precio: 15000, descuento: false },
-      { nombre: "Remera", precio: 8000, descuento: true }
-    ];
+    let productos = JSON.parse(localStorage.getItem("productos")) || [];
 
-    let conDescuento = 0;
-    let sinDescuento = 0;
-
+    const formulario = document.getElementById("formularioProducto");
     const listaDiv = document.getElementById("lista");
+    const conDescuentoSpan = document.getElementById("conDescuento");
+    const sinDescuentoSpan = document.getElementById("sinDescuento");
 
-    console.log("Productos con descuento:");
-
-    for (let i = 0; i < productos.length; i++) {
-      const producto = productos[i];
-
-      // Validación de datos
-      if (!producto.nombre || typeof producto.precio !== "number") {
-        console.warn("Producto inválido:", producto);
-        continue;
-      }
-
-      const productoHTML = document.createElement("div");
-      productoHTML.classList.add("producto");
-
-      if (producto.descuento === true) {
-        productoHTML.classList.add("con-descuento");
-        productoHTML.textContent = `✔ ${producto.nombre} - $${producto.precio}`;
-        conDescuento++;
-        console.log(`- ${producto.nombre}: $${producto.precio}`);
-      } else {
-        productoHTML.classList.add("sin-descuento");
-        productoHTML.textContent = `✘ ${producto.nombre} - $${producto.precio}`;
-        sinDescuento++;
-      }
-
-      listaDiv.appendChild(productoHTML);
+    function guardarEnLocalStorage() {
+      localStorage.setItem("productos", JSON.stringify(productos));
     }
 
-    document.getElementById("conDescuento").textContent = conDescuento;
-    document.getElementById("sinDescuento").textContent = sinDescuento;
+    function mostrarProductos() {
+      listaDiv.innerHTML = "";
+      let conDescuento = 0;
+      let sinDescuento = 0;
 
-    console.log(`\nTotal con descuento: ${conDescuento}`);
-    console.log(`Total sin descuento: ${sinDescuento}`);
+      for (let producto of productos) {
+        // Validación
+        if (!producto.nombre || typeof producto.precio !== "number") {
+          console.warn("Producto inválido:", producto);
+          continue;
+        }
+
+        const div = document.createElement("div");
+        div.classList.add("producto");
+        if (producto.descuento) {
+          div.classList.add("con-descuento");
+          div.textContent = `✔ ${producto.nombre} - $${producto.precio}`;
+          conDescuento++;
+        } else {
+          div.classList.add("sin-descuento");
+          div.textContent = `✘ ${producto.nombre} - $${producto.precio}`;
+          sinDescuento++;
+        }
+        listaDiv.appendChild(div);
+      }
+
+      conDescuentoSpan.textContent = conDescuento;
+      sinDescuentoSpan.textContent = sinDescuento;
+
+      console.log("Productos mostrados:", productos);
+    }
+
+    formulario.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const precio = parseFloat(document.getElementById("precio").value);
+      const descuento = document.getElementById("descuento").checked;
+
+      if (!nombre || isNaN(precio) || precio <= 0) {
+        alert("Por favor ingresá datos válidos.");
+        return;
+      }
+
+      const nuevoProducto = { nombre, precio, descuento };
+      productos.push(nuevoProducto);
+
+      guardarEnLocalStorage();
+      mostrarProductos();
+
+      formulario.reset();
+    });
+
+    // Mostrar productos al cargar la página
+    mostrarProductos();
   </script>
 </body>
 </html>
