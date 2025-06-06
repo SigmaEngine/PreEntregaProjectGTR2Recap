@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Modificar el DOM</title>
+</head>
+<body>
+
+  <p id="miParrafo">Texto inicial</p>
+  <button id="miBoton">Cambiar texto</button>
+
+  <script>
+    // Seleccionamos el botón por su ID
+    const boton = document.getElementById('miBoton');
+
+    // Agregamos un evento al hacer clic
+    boton.addEventListener('click', function() {
+      // Seleccionamos el párrafo por su ID
+      const parrafo = document.getElementById('miParrafo');
+      
+      // Modificamos el contenido del párrafo
+      parrafo.textContent = 'El texto ha sido modificado con JavaScript';
+    });
+  </script>
+
+</body>
+</html>
