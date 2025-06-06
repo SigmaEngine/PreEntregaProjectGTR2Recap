@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista Dinámica</title>
+</head>
+<body>
+
+  <h2>Lista Dinámica</h2>
+  <ul id="miLista">
+    <!-- Los nuevos <li> se agregarán aquí -->
+  </ul>
+
+  <button id="agregarBtn">Agregar Elemento</button>
+
+  <script>
+    // 1. Obtener referencias al botón y a la lista
+    const boton = document.getElementById('agregarBtn');
+    const lista = document.getElementById('miLista');
+
+    // 2. Asociar un evento click al botón
+    boton.addEventListener('click', function () {
+      // 3. Crear un nuevo elemento <li>
+      const nuevoElemento = document.createElement('li');
+
+      // 4. Establecer su contenido
+      nuevoElemento.textContent = 'Nuevo Elemento';
+
+      // 5. Agregar el nuevo <li> a la lista
+      lista.appendChild(nuevoElemento);
+
+      // 6. Mostrar una alerta
+      alert('Se ha añadido un nuevo elemento');
+    });
+  </script>
+
+</body>
+</html>
